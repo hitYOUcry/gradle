@@ -1,0 +1,13 @@
+gradle、groovy、java关系：http://www.jianshu.com/p/f704af0a3da5
+1.一种动态语言，运行与java虚拟机（java语言的扩展）
+2.为什么使用groovy
+	在使用Groovy实现需求的时候就能像写脚本一样简单来实现Java语言实现的功能
+	
+3.DSL 特定领域语言：是指为某些特定领域（domain）设计的专用语言
+	DSL的优点是，可以直接使用其对象领域中的概念，集中描述“想要做到什么”（What）的部分，而不必对“如何做到”（How）进行描述
+	求专不求全 、 方言
+	Makefile 是 DSL。CSS 是 DSL。JSON 是 DSL。SQL 也可以被看成是数据库领域的 DSL。
+	Windows里的ini配置文件、正则表达式
+	从开发者的角度来看：DSL是一种用于提高生产力的手段
+	
+groovy 语法：http://www.groovy-lang.org/syntax.html
