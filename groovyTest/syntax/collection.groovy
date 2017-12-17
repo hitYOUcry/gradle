@@ -1,6 +1,9 @@
 //import java.util.LinkedList
 //Lists Groovy lists are plain JDK java.util.List
-def nums = [1,"2",3] as LinkedList
+def nums = [1,"2",3]
+assert nums instanceof ArrayList
+
+nums = [1,"2",3] as LinkedList
 
 assert nums instanceof LinkedList
 

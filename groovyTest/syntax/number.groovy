@@ -22,10 +22,15 @@ def e = 9223372036854775808
 assert e instanceof BigInteger
 
 // 0b 0 0x 二进制 八进制 十六进制
-
+int xInt = 0b10101111
+assert xInt == 175
+xInt = 077
+assert xInt == 63
+xInt = 0x77
+assert xInt == 119
 
 // 浮点数
-def f = 1.12334
+def f = 1.1
 assert f instanceof BigDecimal
 
 def g = 1.12334f
@@ -37,3 +42,7 @@ assert h instanceof Double
 //assert f instanceof Double
 
 // 下划线区分长数字以及类型后缀截图
+a = 100_0000_0000_0000g
+assert a instanceof BigInteger
+a = 100_0000_0000_0000.0g
+assert a instanceof BigDecimal

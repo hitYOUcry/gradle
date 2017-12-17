@@ -25,13 +25,14 @@ class Main {
     }
 }
 //reflect call default package class
-
+/*
 Class fooClass = Class.forName("Two"); 
 Method fooMethod = fooClass.getDeclaredMethod("main", String[].class);
 // Method fooMethod = fooClass.getDeclaredMethod("sb", null);
 String[][] args = [["1","2","3"]]//I am so clever ^^
 assert args instanceof String[][]
 fooMethod.invoke(fooClass,args) 
+*/
 
 
 /*script compiled into a class
@@ -46,3 +47,5 @@ class Main extends Script {
     }
 }
 */
+import com.nemo.One
+One.main()

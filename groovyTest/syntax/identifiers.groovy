@@ -7,3 +7,10 @@ map."b" = "i am b";
 map./c/ = "i am c";
 map.$/d/$ = "i am d"
 println map
+
+map = [a:'a','b':'b']
+assert map.a == 'a'
+assert map.b == 'b'
+assert map.'a' == 'a'
+assert map.'b' == 'b'
+println map

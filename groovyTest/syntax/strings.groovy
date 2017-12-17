@@ -41,7 +41,12 @@ println m."a"
 def f = /I am string too/
 println f
 
-println '.*\\ssd*.'
-def s = /.*\ssd*./
-println s
+def a =  '.*\\ssd*.'
+def b =  /.*\ssd*./
 
+assert a == b
+
+a = $/ hah\/\/\/\/hah
+ $$a
+/$
+println a

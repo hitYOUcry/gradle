@@ -19,6 +19,8 @@ def isOdd = {it % 2 != 0}
 assert isOdd(1) == true
 assert isOdd.call(1) == true
 
+//assert () == true
+
 //normal parameters
 /*
 def closureWithOneArg = { str -> str.toUpperCase() }
