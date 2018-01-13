@@ -2,3 +2,64 @@
 
 a) Projects and tasks
 每个构建脚本基础元素project和task
+Project API说明：
+	1)Project和build file存在一对一的关系
+	2)创建一个project对象的过程：创建Settings对象->利用Settings对象创建具体的Project对象->evaluate每个Project对象中定义的DEFAULT_BUILD_FILE文件指向的构建脚本
+每个Project会包含一致多个task。task是构建脚本的最小执行单元
+b) 构建脚本本质就是代码
+	基于groovy语法的DSL（gradle）代码
+c) 任务依赖
+d) 动态task
+	通过参数定义task的name
+e) 一个task可以被看做是构建脚本中的一个属性
+f) 给task添加额外的属性ext
+g) 给gradle脚本文件设置默认task，在未指定执行哪个task时，执行默认task
+总结：project和task的概念，自定义一个task，task间的依赖，设置ext属性、默认task等
+
+2.Writing Build Scripts
+
+a) Project API
+	任何不在脚本文件内定义的方法和属性使用都是委托给Project对象处理
+b) 基础groovy语法
+
+3.More about task
+a) task outcomes
+标签一共有5中状态 
+	(no label) or EXECUTED(Task executed its actions)||
+	UP-TO-DATE(Task’s outputs did not change.)||
+	FROM-CACHE(Task’s outputs could be found from a previous execution.)||
+	SKIPPED(Task did not execute its actions.)||
+	NO-SOURCE(Task did not need to execute its actions.)
+b) 定义Task
+c) 定位Task
+d) 添加task依赖
+	A dependsOn: ':taskA'
+	B taskX.dependsOn taskY
+	C taskX.dependsOn {
+    	 tasks.findAll { task -> task.name.startsWith('lib') }
+	  }
+e) 覆盖已有的一个task
+	task copy(type: Copy)
+	task copy(overwrite: true) {
+    	doLast {
+        	println('I am the new one.')
+    	}
+	}
+f) 跳过一个Task
+	1. only if
+		hello.onlyIf { !project.hasProperty('skipHello') }// gradle hello -PskipHello
+	2. StopExecutionException
+		compile.doFirst {
+    		// Here you would put arbitrary conditions in real life.
+    		// But this is used in an integration test so we want defined behavior.
+    		if (true) { throw new StopExecutionException() }
+		}
+	3. 设置enabled 属性
+
+
+
+
+
+
+
+	

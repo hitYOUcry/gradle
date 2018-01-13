@@ -1,0 +1,127 @@
+
+//1. Build Script Basics
+// build script are code
+task hello {
+	doLast {
+		println 'Hello world!'
+		def s = "Groovy"
+		println "s = ${s}"
+		3.times {
+			print "$it"
+		}
+	}
+}
+
+// task dependency
+task A {
+	doLast {
+		println 'i am task A'
+	}
+}
+
+task B(dependsOn:A){
+	doLast {
+		println 'i am task B'
+	}
+}
+
+//dynamic task
+
+4.times { counter ->
+    task "task$counter" {
+        doLast {
+            println "I'm task number $counter"
+        }
+    }
+}
+task0.dependsOn task1,task2
+
+//Task is property
+task MyTask {
+    doLast {
+        println 'Hello world!'
+    }
+}
+MyTask.doLast {
+    println "Greetings from the $MyTask.name task."
+}
+
+// Extra task properties
+task myTask {
+    ext.myProperty = "myValue"
+}
+
+task printTaskProperties {
+    doLast {
+        println myTask.myProperty
+    }
+}
+
+//2.Writing Build Scripts
+//a) Standard project properties
+/*
+println name
+println path
+println description
+println projectDir
+println buildDir
+println group
+println version
+println ant
+*/
+
+//b) Declaring variables
+def dest = "dest"
+task copy(type: Copy) {
+    from "source"
+    into dest
+}
+//c) groovy 函数调用，闭包作为最后一个参数。
+/*
+void repositories(String a,Closure c){
+	c.call()
+}
+
+repositories {
+    println "in a closure"
+}
+repositories() { println "in a closure" }
+repositories({ println "in a closure" })
+*/
+//定义task
+/*
+task hello {
+	println 'hello'
+}
+task(hello) {
+	println 'hello'
+}
+task("hello") {
+	println 'hello'
+}
+task "hello" {
+	println 'hello'
+}
+tasks.create(name:'hello'){
+	println 'hello'
+}
+*/
+//定位task
+println hello.name
+println project.hello.name
+println tasks.hello.name
+println tasks['hello'].name
+
+project(':proA'){
+	task hello
+}
+println tasks.getByPath('hello').path
+println tasks.getByPath(':proA:hello').path
+
+
+
+
+
+
+
+
